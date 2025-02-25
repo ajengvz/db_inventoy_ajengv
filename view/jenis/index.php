@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="shttps://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
@@ -46,36 +47,33 @@
   </div>
 </nav>
 <h1>Data jenis </h1>
-<a class="btn btn-primary" href="view_tambah.php" role="button">Tambah jenis</a>
+<a class="btn btn-primary" href="view_tambah.php" role="button"><i class="fa-solid fa-plus"></i>Tambah jenis</a>
 <br></br>
 <table class="table table-striped table-bordered">
   <thead>
     <tr>
       <th scope="col">Nama_jenis</th>
       <th scope="col">id_jenis</th>
+      <th scope="col">aksi</th>
     </tr>
   </thead>
   <?php
         include '../../config/koneksi.php';
         $query = mysqli_query($conn,"SELECT * FROM jenis");
-        $no=1;
         if(mysqli_num_rows($query)){
             while($result=mysqli_fetch_assoc($query)){
                 ?>
                     <tr>
-                            <td><?php echo $no;?></td>
                              <td><?php echo $result['Nama_jenis'];?></td> 
                              <td><?php echo $result['id_jenis'];?></td>
-                            
-                            
                              <td>
-                                <a href="">Edit</a>
-                                <a href="">Hapus</a>
+                               <a href="view_edit.php?id_jenis=<?php echo $result['id_jenis']?>"
+                               class= "btn btn-warning"><i class="fa-solid fa-pencil"><i class="fa-solid fa-pen-to-square"></i>Edit</a>
+          
                              </td>
                              
                     </tr>
                 <?php
-                $no++;
             }
         }else{
             echo "Data kosong";

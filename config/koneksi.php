@@ -3,7 +3,7 @@
 $hostname = 'localhost';
 $username = 'root';
 $password = '';
-$database_name = 'db_inventory_ajengv';
+$database_name = 'db_inventoy_ajengv';
 
 $conn = mysqli_connect($hostname,$username,$password,$database_name);
 
